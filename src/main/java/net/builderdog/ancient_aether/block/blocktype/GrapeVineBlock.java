@@ -13,6 +13,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -36,7 +37,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -130,11 +131,12 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
         }
     }
 
-    public @NotNull InteractionResult use(BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
+    @Override
+    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
         int i = state.getValue(AGE);
         boolean flag = i == 2;
-        if (!flag && player.getItemInHand(hand).is(Items.BONE_MEAL) && player.getItemInHand(hand).canPerformAction(ToolActions.SHEARS_CARVE)) {
-            return InteractionResult.PASS;
+        if (!flag && player.getItemInHand(hand).is(Items.BONE_MEAL) && player.getItemInHand(hand).canPerformAction(ItemAbilities.SHEARS_CARVE)) {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
         if (i > 1) {
             int j = 1 + level.random.nextInt(1);
@@ -143,9 +145,9 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
             level.setBlock(pos, age, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, age));
             level.playSound(null, pos, AncientAetherSoundEvents.BLOCK_GRAPE_VINE_PICK_GRAPES.get(), SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        if (player.getItemInHand(hand).canPerformAction(ToolActions.SHEARS_CARVE)) {
+        if (player.getItemInHand(hand).canPerformAction(ItemAbilities.SHEARS_CARVE)) {
             if (!state.getValue(CROPPED)) {
                 level.gameEvent(player, GameEvent.SHEAR, pos);
                 player.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
@@ -153,10 +155,10 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
                 level.setBlock(pos, cut, 2);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, cut));
                 level.playSound(null, pos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }
-        return super.use(state, level, pos, player, hand, hitResult);
+
     }
 
     public boolean isValidBonemealTarget(@NotNull LevelReader level, @NotNull BlockPos pos, BlockState state) {

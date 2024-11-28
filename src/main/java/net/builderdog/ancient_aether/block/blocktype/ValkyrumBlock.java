@@ -13,6 +13,7 @@ public class ValkyrumBlock extends Block {
         super(properties);
     }
 
+    //TODO: change to check for the gravitite-equiv. tier tag? Need to see how other addons handle this...
     @SuppressWarnings("deprecation")
     @Override
     public boolean canHarvestBlock(@NotNull BlockState state, @NotNull BlockGetter getter, @NotNull BlockPos pos, Player player) {

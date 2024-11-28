@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AncientAetherEffects {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, AncientAether.MODID);
 
-    public static final DeferredHolder<MobEffect, MobEffect> DIVINE_PROTECTION = EFFECTS.register("divine_protection", () -> new DivineProtectionEffect().addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "CB33E1C-E2D6-4A0B-9562-55C25FE53A1E", 3, AttributeModifier.Operation.ADDITION));
+    //TODO: figure out wtf this is
+    public static final DeferredHolder<MobEffect, MobEffect> DIVINE_PROTECTION = EFFECTS.register("divine_protection", () -> new DivineProtectionEffect().addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "CB33E1C-E2D6-4A0B-9562-55C25FE53A1E", 3, AttributeModifier.Operation.ADD_VALUE));
     public static final DeferredHolder<MobEffect, MobEffect> NATURES_BOOST = EFFECTS.register("natures_boost", NaturesBoostEffect::new);
 }

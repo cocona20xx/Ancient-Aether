@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class AncientAetherBlockEntityTypes extends BlockEntity {
+    //TODO: passing null to @NotNull!
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, AncientAether.MODID);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AncientAetherSignBlockEntity>> SIGN = BLOCK_ENTITY_TYPES.register("sign", () ->

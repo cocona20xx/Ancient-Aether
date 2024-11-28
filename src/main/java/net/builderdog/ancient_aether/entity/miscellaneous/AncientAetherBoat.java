@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
+//TODO: skyroot boat does not real (did the class get moved?)
 public class AncientAetherBoat extends Boat implements SkyrootBoatBehavior {
     private static final EntityDataAccessor<Integer> WOOD_TYPE = SynchedEntityData.defineId(AncientAetherBoat.class, EntityDataSerializers.INT);
 

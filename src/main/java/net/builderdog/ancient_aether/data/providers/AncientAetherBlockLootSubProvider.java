@@ -31,11 +31,12 @@ public abstract class AncientAetherBlockLootSubProvider extends AetherBlockLootS
         add(block, createSilkTouchDispatchTable(block, applyExplosionDecay(itemLike, LootItem.lootTableItem(itemLike).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).apply(DoubleDrops.builder()))));
     }
 
+    //TODO: missing accessor method, get a holder for the enchantment type?
     public LootTable.Builder droppingCrystalSkyrootLeaves(Block block, Block sapling, float... chances) {
         return droppingWithChancesAndSkyrootSticks(block, sapling, chances)
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(BlockLootAccessor.aether$hasShearsOrSilkTouch().invert())
                         .add(applyExplosionCondition(block,
                                 LootItem.lootTableItem(AetherItems.WHITE_APPLE.get()))
-                                .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.0055F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.FORTUNE, 0.0055F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
     }
 }

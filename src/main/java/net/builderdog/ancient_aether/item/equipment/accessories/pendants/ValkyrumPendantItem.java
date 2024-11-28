@@ -17,7 +17,7 @@ import java.util.UUID;
 public class ValkyrumPendantItem extends PendantItem {
 
     public ValkyrumPendantItem(Properties properties) {
-        super(new ResourceLocation(AncientAether.MODID, "valkyrum_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_VALKYRUM_PENDANT, properties);
+        super(ResourceLocation.fromNamespaceAndPath(AncientAether.MODID, "valkyrum_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_VALKYRUM_PENDANT, properties);
     }
 
     @Override

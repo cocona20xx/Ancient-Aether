@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+//TODO: no shocker here that this is broken, considering loot tables were completely rewritten in 1.20.5 or so
 public class AncientAetherEntityLoot extends EntityLootSubProvider {
     public AncientAetherEntityLoot() {
         super(FeatureFlags.REGISTRY.allFlags());

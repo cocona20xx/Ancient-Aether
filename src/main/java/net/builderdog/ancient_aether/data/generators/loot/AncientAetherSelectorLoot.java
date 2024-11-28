@@ -16,6 +16,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.function.BiConsumer;
 
+//TODO: no shocker here that this is broken, considering loot tables were completely rewritten in 1.20.5 or so
 public class AncientAetherSelectorLoot implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> builder) {

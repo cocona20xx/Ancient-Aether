@@ -27,8 +27,8 @@ public class ObeliskTrigger extends SimpleCriterionTrigger<ObeliskTrigger.Instan
 
     public record Instance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleInstance {
         public static final Codec<Instance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                        ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(Instance::player),
-                        ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "item").forGetter(Instance::item))
+                        EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(Instance::player),
+                        ItemPredicate.CODEC.optionalFieldOf("item").forGetter(Instance::item))
                 .apply(instance, Instance::new));
 
         public static Criterion<Instance> forItem(ItemPredicate item) {
@@ -39,8 +39,9 @@ public class ObeliskTrigger extends SimpleCriterionTrigger<ObeliskTrigger.Instan
             return forItem(ItemPredicate.Builder.item().of(item).build());
         }
 
+        //TODO: is this actually the closest equiv. to 1.20.4 ItemPredicate#matches?
         public boolean test(ItemStack stack) {
-            return item.isEmpty() || item.get().matches(stack);
+            return item.isEmpty() || item.get().test(stack);
         }
     }
 }

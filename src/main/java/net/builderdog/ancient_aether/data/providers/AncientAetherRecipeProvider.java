@@ -4,6 +4,7 @@ import com.aetherteam.aether.data.providers.AetherRecipeProvider;
 import com.aetherteam.aether.recipe.builder.BiomeParameterRecipeBuilder;
 import com.aetherteam.aether.recipe.recipes.block.SwetBallRecipe;
 import com.aetherteam.nitrogen.recipe.BlockStateIngredient;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.builderdog.ancient_aether.item.AncientAetherItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -97,10 +98,10 @@ public abstract class AncientAetherRecipeProvider extends AetherRecipeProvider {
                         Ingredient.of(ItemTags.TRIMMABLE_ARMOR),
                         Ingredient.of(ItemTags.TRIM_MATERIALS), RecipeCategory.MISC)
                 .unlocks("smithing_templates",
-                        has(armorTrim)).save(consumer, new ResourceLocation(id, getItemName(armorTrim) + "_smithing_trim"));
+                        has(armorTrim)).save(consumer, ResourceLocation.fromNamespaceAndPath(id, getItemName(armorTrim) + "_smithing_trim"));
     }
 
-    protected BiomeParameterRecipeBuilder swetBallConversionWithProperties(Block result, Map<Property<?>, Comparable<?>> resultProperties, Block ingredient, TagKey<Biome> tagKey) {
+    protected BiomeParameterRecipeBuilder swetBallConversionWithProperties(Block result, Reference2ObjectArrayMap<Property<?>, Comparable<?>> resultProperties, Block ingredient, TagKey<Biome> tagKey) {
         return BiomeParameterRecipeBuilder.recipe(BlockStateIngredient.of(ingredient), result, resultProperties, tagKey, SwetBallRecipe::new);
     }
 }

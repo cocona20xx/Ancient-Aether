@@ -17,7 +17,7 @@ import java.util.UUID;
 public class HermesPendantItem extends PendantItem {
 
     public HermesPendantItem(Properties properties) {
-        super(new ResourceLocation(AncientAether.MODID, "hermes_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_HERMES_PENDANT, properties);
+        super(ResourceLocation.fromNamespaceAndPath(AncientAether.MODID, "hermes_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_HERMES_PENDANT, properties);
     }
 
     @Override

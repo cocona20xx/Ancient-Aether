@@ -17,7 +17,7 @@ import java.util.UUID;
 public class GrowthPendantItem extends PendantItem {
 
     public GrowthPendantItem(Properties properties) {
-        super(new ResourceLocation(AncientAether.MODID, "growth_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_GROWTH_PENDANT, properties);
+        super(ResourceLocation.fromNamespaceAndPath(AncientAether.MODID, "growth_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_GROWTH_PENDANT, properties);
     }
 
     @Override

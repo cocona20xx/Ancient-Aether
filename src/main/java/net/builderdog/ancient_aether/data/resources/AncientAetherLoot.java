@@ -53,7 +53,7 @@ public class AncientAetherLoot {
     public static final ResourceLocation SELECTORS_GALE_VASE = register("selectors/gale_vase");
 
     private static ResourceLocation register(String id) {
-        return register(new ResourceLocation(AncientAether.MODID, id));
+        return register(ResourceLocation.fromNamespaceAndPath(AncientAether.MODID, id));
     }
 
     private static ResourceLocation register(ResourceLocation id) {

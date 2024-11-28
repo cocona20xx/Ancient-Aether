@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiConsumer;
 
+//TODO: no shocker here that this is broken, considering loot tables were completely rewritten in 1.20.5 or so
 public class AncientAetherChestLoot implements LootTableSubProvider {
     @Override
     public void generate(@NotNull BiConsumer<ResourceLocation, LootTable.Builder> builder) {

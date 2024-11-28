@@ -31,6 +31,7 @@ public class ObeliskBlock extends Block {
         super(properties);
     }
 
+    //TODO: split logic between useItemOn and useWithoutItem?
     @SuppressWarnings("deprecation")
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {

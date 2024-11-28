@@ -16,8 +16,9 @@ public class NaturesBoostEffect extends MobEffect {
         super(MobEffectCategory.BENEFICIAL, 0x8FA8A3);
     }
 
+    //TODO: apparently this needs to return a boolean now
     public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        Level level = entity.level();
+        Level level = entity.level(); //TODO: autocloseable
         if (!level.isClientSide) {
             for (int i = 0; i < 4; ++i) {
                 int j = Mth.floor(entity.getX() + (double) ((float) (i % 2 * 2 - 1) * 0.25F));

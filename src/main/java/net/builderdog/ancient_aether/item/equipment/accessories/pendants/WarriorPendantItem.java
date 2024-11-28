@@ -17,7 +17,7 @@ import java.util.UUID;
 public class WarriorPendantItem extends PendantItem {
 
     public WarriorPendantItem(Properties properties) {
-        super(new ResourceLocation(AncientAether.MODID, "warrior_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_WARRIOR_PENDANT, properties);
+        super(ResourceLocation.fromNamespaceAndPath(AncientAether.MODID, "warrior_pendant"), AncientAetherSoundEvents.ITEM_ACCESSORY_EQUIP_WARRIOR_PENDANT, properties);
     }
 
     @Override
